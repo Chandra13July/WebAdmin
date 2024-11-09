@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-</head>
 <body class="bg-white flex items-center justify-center h-screen">
     <!-- Notifikasi Sukses -->
     <?php if (isset($_SESSION['success'])): ?>
@@ -50,16 +42,25 @@
                             <i class="fas fa-eye text-gray-400 absolute right-2 top-9 cursor-pointer" id="toggle-password"></i>
                         </div>
                         <div class="text-right mt-2">
-                            <a class="text-blue-500 hover:underline text-sm" href="<?= BASEURL; ?>/auth/forgotpassword">Forgot Password?</a>
+                            <a class="text-blue-500 hover:underline text-sm" href="<?= BASEURL; ?>/auth/forgotPasswordAdmin">Forgot Password?</a>
                         </div>
                     </div>
 
                     <?php if (isset($_SESSION['error'])): ?>
-                        <div class="text-red-500 mb-4">
-                            <?= $_SESSION['error']; ?>
-                            <?php unset($_SESSION['error']); ?>
+                        <div class="text-red-500 mb-4 w-full">
+                            <div class="flex items-center">
+                                <!-- Icon Cross (X) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+
+                                <!-- Error Message -->
+                                <span><?= $_SESSION['error']; ?></span>
+                            </div>
                         </div>
+                        <?php unset($_SESSION['error']); ?>
                     <?php endif; ?>
+
                     <button class="w-full bg-black text-white py-2 rounded-md" type="submit">
                         LOGIN
                     </button>
@@ -92,4 +93,3 @@
         });
     </script>
 </body>
-</html>
